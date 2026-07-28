@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAZOP-X: AI-Driven Process Safety - Exentropic Ideas</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS v3 CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace'],
+                    },
+                    colors: {
+                        darkblue: {
+                            950: '#070a13',
+                            900: '#0b1125',
+                            800: '#131e3d',
+                            700: '#1d2e5c',
+                        },
+                        neon: {
+                            cyan: '#00aeef',
+                            blue: '#00aeef',
+                            purple: '#a78bfa',
+                            magenta: '#ec008c',
+                            green: '#10b981',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Fluid resolution-independent scaling (AspenTech style) */
+        @media (min-width: 1024px) {
+            html {
+                font-size: clamp(16px, 0.9vw + 6.8px, 21px);
+            }
+        }
+
+        .glow-effect {
+            box-shadow: 0 0 40px -10px rgba(79, 172, 254, 0.15);
+        }
+        .glow-magenta {
+            box-shadow: 0 0 40px -10px rgba(236, 0, 140, 0.15);
+        }
+        .bg-gradient-mesh {
+            background-color: #f8fafc;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(219, 234, 254, 0.45) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, rgba(224, 242, 254, 0.5) 0, transparent 50%), 
+                radial-gradient(at 100% 100%, rgba(243, 232, 255, 0.45) 0, transparent 50%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+        }
+        .glass-card-hover:hover {
+            border-color: rgba(0, 174, 239, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(0, 174, 239, 0.15);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gradient-mesh text-slate-800 font-sans min-h-screen selection:bg-blue-100 selection:text-blue-900">
+
+    <!-- Sticky Navbar (1.5x Scaled Branding) -->
+    <header class="sticky top-0 z-50 glass-card border-b border-slate-200/80">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 h-[120px] flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-[18px]" aria-label="Exentropic Home">
+                <svg class="w-[60px] h-[60px] hover:opacity-90 transition-opacity" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="11" fill="#0f172a" />
+                    <circle cx="20" cy="50" r="11" fill="#0f172a" />
+                    <circle cx="50" cy="50" r="11" fill="#00aeef" />
+                    <circle cx="20" cy="80" r="11" fill="#0f172a" />
+                    <circle cx="50" cy="80" r="11" fill="#0f172a" />
+                    <circle cx="80" cy="80" r="11" fill="#0f172a" />
+                </svg>
+                <div class="flex flex-col justify-center">
+                    <span class="font-sans text-[30px] font-bold tracking-wide text-slate-900 leading-none">
+                        <span class="text-[#00aeef]">E</span>xentropic <span class="text-[#00aeef]">I</span>deas
+                    </span>
+                    <span class="font-mono text-[13.5px] font-bold tracking-widest text-slate-500 uppercase mt-[9px] leading-none">
+                        WISDOM OF SCIENCE. POWER OF AI.
+                    </span>
+                </div>
+            </a>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
+                <a href="index.html#vision" class="text-slate-600 hover:text-blue-600 transition-colors">Vision</a>
+                <a href="force-x.html" class="text-slate-600 hover:text-blue-600 transition-colors">Force-X</a>
+                <a href="omniplant.html" class="text-slate-600 hover:text-blue-600 transition-colors">OmniPlant-AX</a>
+                <a href="hazop.html" class="text-blue-600 transition-colors font-semibold">HAZOP-X</a>
+                <a href="knowledge.html" class="text-slate-600 hover:text-blue-600 transition-colors">Knowledge Centre</a>
+                <a href="about.html" class="text-slate-600 hover:text-blue-600 transition-colors">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HAZOP-X Detail Section -->
+    <section id="detail" class="pt-12 pb-24 bg-white scroll-mt-[120px]">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Back navigation -->
+            <div class="mb-8">
+                <a href="index.html" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-500 transition-colors">
+                    <span class="mr-2">←</span> Back to Homepage
+                </a>
+            </div>
+
+            <!-- Page Title -->
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 font-sans">HAZOP-X: AI-Driven Process Safety</h2>
+                <div class="h-1 w-20 bg-pink-500 mx-auto rounded"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
+                <!-- Left text -->
+                <div class="lg:col-span-6 space-y-6">
+                    <h3 class="text-2xl font-bold text-slate-900 font-mono">Modernizing Operational Risk Assessment</h3>
+                    <p class="text-slate-655 leading-relaxed text-sm sm:text-base font-light">
+                        HAZOP-X is an AI-driven safety infrastructure designed to automate and simplify process hazard analysis (PHA). By continuously evaluating plant piping diagrams and operational bounds, it verifies potential vulnerabilities, optimizing industrial safety protocols.
+                    </p>
+                    
+                    <!-- Process Flow Steps -->
+                    <div class="space-y-4">
+                        <h4 class="text-xs font-mono uppercase tracking-widest text-slate-500 font-bold">Risk Assessment Pipeline</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3.5 p-3 rounded-xl bg-slate-50 border border-slate-200 shadow-sm">
+                                <span class="w-7 h-7 rounded-full bg-pink-50 border border-pink-200 flex items-center justify-center font-mono text-xs text-pink-700 font-bold">1</span>
+                                <div>
+                                    <span class="text-sm font-bold text-slate-800 block font-mono">Compile Plant Inputs</span>
+                                    <span class="text-xs text-slate-500">Import P&IDs, Last HAZOP Report, and Process Description.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3.5 p-3 rounded-xl bg-slate-50 border border-slate-200 shadow-sm">
+                                <span class="w-7 h-7 rounded-full bg-pink-50 border border-pink-200 flex items-center justify-center font-mono text-xs text-pink-700 font-bold">2</span>
+                                <div>
+                                    <span class="text-sm font-bold text-slate-800 block font-mono">Evaluate Guide Words</span>
+                                    <span class="text-xs text-slate-500">AI automatically scans nodes against flow, temperature, and pressure deviations.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3.5 p-3 rounded-xl bg-slate-50 border border-slate-200 shadow-sm">
+                                <span class="w-7 h-7 rounded-full bg-pink-50 border border-pink-200 flex items-center justify-center font-mono text-xs text-pink-700 font-bold">3</span>
+                                <div>
+                                    <span class="text-sm font-bold text-slate-800 block font-mono">HAZOP Team Review & Report</span>
+                                    <span class="text-xs text-slate-500">Refine findings and export complete regulatory-compliant hazard reports.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right visual flow representation -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="glass-card p-6 rounded-2xl border border-slate-200 shadow-lg bg-white">
+                        <span class="text-xs font-mono text-slate-500 uppercase tracking-widest block mb-4">P&ID Analysis Preview</span>
+                        
+                        <div class="w-full bg-slate-50 p-2.5 rounded-xl border border-slate-200 flex justify-center shadow-inner">
+                            <img src="assets/slide_8_img_2.png" alt="P&ID Diagram Analysis" class="w-full max-h-[350px] object-contain rounded-lg" />
+                        </div>
+                        
+                        <div class="mt-4 flex justify-between items-center text-xs">
+                            <span class="font-mono text-slate-500">Vessel Node #034 - Catalyst Bed</span>
+                            <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200 font-mono font-medium">Safe Boundary</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HAZOP-X Interactive Simulation Console (Demo) -->
+            <div id="demo" class="border-t border-slate-200 pt-16 scroll-mt-[120px] text-slate-850">
+                <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 font-sans">Try HAZOP-X In Real Time</h2>
+                    <div class="h-1 w-20 bg-pink-500 mx-auto rounded"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                    <!-- Left Form Panel / Dashboard Console -->
+                    <div class="lg:col-span-7 flex">
+                        <div id="demo-console" class="glass-card w-full p-6 sm:p-8 rounded-2xl border border-slate-200 flex flex-col justify-between shadow-lg bg-slate-50 text-slate-800">
+                            <!-- Login Interface -->
+                            <div id="login-form-view" class="space-y-6">
+                                <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+                                    <div>
+                                        <h3 class="text-lg font-bold text-slate-900 font-mono">HAZOP-X Portal</h3>
+                                        <p class="text-xs text-slate-500">Enter temporary account credentials below</p>
+                                    </div>
+                                    <span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 text-xs font-mono border border-blue-200">Pilot Project v1</span>
+                                </div>
+                                
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="block text-xs font-mono uppercase tracking-widest text-slate-500 mb-2">Account ID</label>
+                                        <input type="text" id="demo-account" placeholder="Enter Account ID" class="w-full bg-white border border-slate-300 px-4 py-2.5 rounded-lg text-sm focus:outline-none focus:border-blue-500 font-mono text-slate-800" />
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-mono uppercase tracking-widest text-slate-500 mb-2">Password</label>
+                                        <input type="password" id="demo-password" placeholder="••••••••" class="w-full bg-white border border-slate-300 px-4 py-2.5 rounded-lg text-sm focus:outline-none focus:border-blue-500 font-mono text-slate-800" />
+                                    </div>
+                                </div>
+
+                                <button onclick="handleLogin()" class="w-full py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold rounded-lg hover:opacity-95 transition-all text-sm uppercase tracking-wider font-mono shadow-sm">
+                                    Authenticate Account
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Request Info Panel -->
+                    <div class="lg:col-span-5 flex">
+                        <div class="glass-card w-full p-6 sm:p-8 rounded-2xl border border-slate-200 flex flex-col justify-between shadow-md bg-slate-50 text-slate-850">
+                            <div class="space-y-6">
+                                <span class="text-xs font-mono uppercase tracking-widest text-blue-600 font-bold block">Pilot Project Notice</span>
+                                <h3 class="text-xl font-bold text-slate-900 font-sans">100% Free & Open Evaluation</h3>
+                                <p class="text-sm text-slate-600 leading-relaxed font-light">
+                                    HAZOP-X was our pilot project to test the capabilities of Large Language Models. We tested different LLMs and chose Google Gemini to launch our pipeline.
+                                </p>
+                                <p class="text-sm text-slate-600 leading-relaxed font-light">
+                                    Our engineering team designed and deployed the orchestration and semantic reasoning framework that extracts and builds complex piping logic from P&IDs. While Google Gemini provides the foundational large language model capabilities, our safety-contextualized prompt architecture and constraint engine ensure structured, rigorous, and industry-compliant hazard identification.
+                                </p>
+                                <div class="bg-white p-4 rounded-xl border border-slate-200 text-xs text-slate-655 shadow-sm">
+                                    <strong>How to evaluate:</strong> Contact us to request a temporary account. You will receive a 90-day ID and password.
+                                </div>
+                            </div>
+
+                            <!-- Mini Contact Form -->
+                            <div class="pt-6 border-t border-slate-200 mt-6">
+                                <h4 class="text-xs font-mono uppercase tracking-widest text-slate-500 mb-3">Request Account Credentials</h4>
+                                <div class="text-xs text-slate-655">
+                                    To request a 90-day evaluation account, please email us directly at 
+                                    <a href="mailto:contact@exentropic.com" class="text-blue-600 font-bold hover:underline font-mono">contact@exentropic.com</a>.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-100 border-t border-slate-200 py-12 text-slate-600 text-xs text-center font-mono">
+        <div class="max-w-screen-2xl mx-auto px-4 space-y-4">
+            <p>© 2026 EXENTROPIC IDEAS INC. ALL RIGHTS RESERVED.</p>
+            <p class="text-slate-500">Based in London, Canada. Engineered for the global industrial landscape.</p>
+            <p class="text-slate-500 font-semibold mt-2">Contact Information: <a href="mailto:contact@exentropic.com" class="text-blue-600 hover:underline">contact@exentropic.com</a></p>
+            <div class="flex justify-center space-x-6 pt-4 text-slate-500">
+                <a href="index.html#vision" class="hover:text-slate-900 transition-colors">Vision</a>
+                <span>•</span>
+                <a href="force-x.html" class="hover:text-slate-900 transition-colors">Force-X</a>
+                <span>•</span>
+                <a href="omniplant.html" class="hover:text-slate-900 transition-colors">OmniPlant-AX</a>
+                <span>•</span>
+                <a href="hazop.html" class="hover:text-slate-900 transition-colors font-semibold">HAZOP-X</a>
+                <span>•</span>
+                <a href="knowledge.html" class="hover:text-slate-900 transition-colors">Knowledge Centre</a>
+                <span>•</span>
+                <a href="about.html" class="hover:text-slate-900 transition-colors">About</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JS Scripts -->
+    <script>
+        function handleLogin() {
+            const acc = document.getElementById('demo-account').value.trim();
+            const pass = document.getElementById('demo-password').value.trim();
+            
+            const formView = document.getElementById('login-form-view');
+            formView.innerHTML = `
+                <div class="space-y-4 py-8 text-center text-slate-800">
+                    <div class="w-12 h-12 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 font-bold mx-auto text-xl shadow-lg">i</div>
+                    <h3 class="text-lg font-bold text-slate-900 font-mono">Request Evaluation Access</h3>
+                    <p class="text-sm text-slate-600 px-4 leading-relaxed font-light">
+                        To activate this evaluation account or to request a new 90-day temporary ID and password, please contact Exentropic Ideas directly at:
+                    </p>
+                    <a href="mailto:contact@exentropic.com" class="text-blue-600 font-bold hover:underline block font-mono text-base mt-2">contact@exentropic.com</a>
+                    <button onclick="window.location.reload()" class="mt-6 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-white rounded-lg text-xs font-semibold transition-all font-mono">Back to Login</button>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

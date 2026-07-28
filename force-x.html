@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Force-X: Hybrid Digital Twin - Exentropic Ideas</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS v3 CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace'],
+                    },
+                    colors: {
+                        darkblue: {
+                            950: '#070a13',
+                            900: '#0b1125',
+                            800: '#131e3d',
+                            700: '#1d2e5c',
+                        },
+                        neon: {
+                            cyan: '#00aeef',
+                            blue: '#00aeef',
+                            purple: '#a78bfa',
+                            magenta: '#ec008c',
+                            green: '#10b981',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Fluid resolution-independent scaling (AspenTech style) */
+        @media (min-width: 1024px) {
+            html {
+                font-size: clamp(16px, 0.9vw + 6.8px, 21px);
+            }
+        }
+
+        .glow-effect {
+            box-shadow: 0 0 40px -10px rgba(79, 172, 254, 0.15);
+        }
+        .glow-magenta {
+            box-shadow: 0 0 40px -10px rgba(236, 0, 140, 0.15);
+        }
+        .bg-gradient-mesh {
+            background-color: #f8fafc;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(219, 234, 254, 0.45) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, rgba(224, 242, 254, 0.5) 0, transparent 50%), 
+                radial-gradient(at 100% 100%, rgba(243, 232, 255, 0.45) 0, transparent 50%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+        }
+        .glass-card-hover:hover {
+            border-color: rgba(0, 174, 239, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(0, 174, 239, 0.15);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gradient-mesh text-slate-800 font-sans min-h-screen selection:bg-blue-100 selection:text-blue-900">
+
+    <!-- Sticky Navbar (1.5x Scaled Branding) -->
+    <header class="sticky top-0 z-50 glass-card border-b border-slate-200/80">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 h-[120px] flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-[18px]" aria-label="Exentropic Home">
+                <svg class="w-[60px] h-[60px] hover:opacity-90 transition-opacity" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="11" fill="#0f172a" />
+                    <circle cx="20" cy="50" r="11" fill="#0f172a" />
+                    <circle cx="50" cy="50" r="11" fill="#00aeef" />
+                    <circle cx="20" cy="80" r="11" fill="#0f172a" />
+                    <circle cx="50" cy="80" r="11" fill="#0f172a" />
+                    <circle cx="80" cy="80" r="11" fill="#0f172a" />
+                </svg>
+                <div class="flex flex-col justify-center">
+                    <span class="font-sans text-[30px] font-bold tracking-wide text-slate-900 leading-none">
+                        <span class="text-[#00aeef]">E</span>xentropic <span class="text-[#00aeef]">I</span>deas
+                    </span>
+                    <span class="font-mono text-[13.5px] font-bold tracking-widest text-slate-500 uppercase mt-[9px] leading-none">
+                        WISDOM OF SCIENCE. POWER OF AI.
+                    </span>
+                </div>
+            </a>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
+                <a href="index.html#vision" class="text-slate-600 hover:text-blue-600 transition-colors">Vision</a>
+                <a href="force-x.html" class="text-blue-600 transition-colors font-semibold">Force-X</a>
+                <a href="omniplant.html" class="text-slate-600 hover:text-blue-600 transition-colors">OmniPlant-AX</a>
+                <a href="hazop.html" class="text-slate-600 hover:text-blue-600 transition-colors">HAZOP-X</a>
+                <a href="knowledge.html" class="text-slate-600 hover:text-blue-600 transition-colors">Knowledge Centre</a>
+                <a href="about.html" class="text-slate-600 hover:text-blue-600 transition-colors">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Force-X Detail Section -->
+    <section id="detail" class="pt-12 pb-24 bg-white scroll-mt-[120px]">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Back navigation -->
+            <div class="mb-8">
+                <a href="index.html" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-500 transition-colors">
+                    <span class="mr-2">←</span> Back to Homepage
+                </a>
+            </div>
+
+            <!-- Page Title -->
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 font-sans">Force-X: Hybrid Digital Twin</h2>
+                <div class="h-1 w-20 bg-blue-600 mx-auto rounded"></div>
+            </div>
+
+            <!-- Intro Card -->
+            <div class="glass-card p-8 rounded-2xl mb-12 border border-slate-200 bg-white text-slate-800 shadow-xl">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-8 space-y-4">
+                        <h3 class="text-xl font-bold text-slate-900 font-mono">Physics-Based Modeling + Neural Networks</h3>
+                        <p class="text-slate-655 leading-relaxed text-sm sm:text-base font-light">
+                            Force-X is the fusion of physics-based modeling and neural network-based deep machine learning. This makes the thermodynamics, kinetics, and hydrodynamics fully embedded in the machine learning model. Hence, Force-X provides unmatched predictive insight and asset optimization capabilities.
+                        </p>
+                        <div class="flex items-center space-x-3 text-xs text-blue-600 font-mono">
+                            <span>Mass & Energy Balance</span>
+                            <span>•</span>
+                            <span>Thermodynamics</span>
+                            <span>•</span>
+                            <span>Kinetics</span>
+                            <span>•</span>
+                            <span>Unit Operations</span>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-4 flex justify-center">
+                        <div class="p-1 border border-slate-200 bg-slate-50 rounded-xl max-w-[280px] shadow-md">
+                            <img src="assets/slide_3_img_2.jpg" alt="Force-X Digital Process Model" class="w-full h-auto rounded-lg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Force-X Hybrid Flowchart Section -->
+            <div class="glass-card p-6 sm:p-8 rounded-2xl mb-12 border border-slate-200 overflow-hidden shadow-sm bg-white text-slate-850 relative">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-blue-500/5 to-transparent rounded-full filter blur-3xl opacity-30"></div>
+                <h3 class="text-lg font-bold text-slate-900 mb-8 font-mono text-center sm:text-left relative z-10">Hybrid Digital Twin Generation Workflow</h3>
+                
+                <div class="flex flex-col xl:flex-row items-center justify-between gap-6 xl:gap-2 mt-28 relative z-10 text-slate-800">
+                    
+                    <!-- Step 1: Orchestration -->
+                    <div class="flex-1 w-full max-w-[220px]">
+                        <div class="w-full h-32 rounded-xl border border-slate-200 bg-slate-55 bg-slate-50 p-4 flex flex-col items-center justify-center text-center shadow-md hover:border-blue-500/40 transition-all">
+                            <span class="text-xs font-mono text-blue-600 uppercase tracking-widest mb-1.5 font-bold">Input Setup</span>
+                            <span class="text-sm font-bold text-slate-800 leading-tight font-mono">ORCHESTRATION AND CASE DEFINITION LAYER</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Arrow 1 -->
+                    <div class="flex-shrink-0 xl:rotate-0 rotate-90 text-slate-400 font-bold text-xl my-2 xl:my-0">➔</div>
+                    
+                    <!-- Step 2: First Principle Simulation -->
+                    <div class="flex-1 w-full max-w-[240px] relative flex flex-col items-center justify-center">
+                        <!-- Additional Context (Absolute positioned above) -->
+                        <div class="absolute bottom-full left-0 right-0 mb-4 text-center px-1">
+                            <span class="text-[10px] font-mono text-slate-700 uppercase leading-tight block font-semibold">Mass, Energy & Momentum Balance, Thermodynamics, Kinetics, Unit Operations</span>
+                        </div>
+                        <!-- Main Box -->
+                        <div class="w-full h-32 rounded-xl border border-slate-200 bg-slate-50 p-4 flex flex-col items-center justify-center text-center shadow-md hover:border-red-500/40 transition-all">
+                            <span class="text-xs font-mono text-red-650 text-red-600 uppercase tracking-widest mb-1.5 font-bold">Physics Model</span>
+                            <span class="text-sm font-bold text-slate-800 leading-tight font-mono">FIRST PRINCIPLE SIMULATION MODEL</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Arrow 2 -->
+                    <div class="flex-shrink-0 xl:rotate-0 rotate-90 text-slate-400 font-bold text-xl my-2 xl:my-0">➔</div>
+                    
+                    <!-- Step 3: Training Data -->
+                    <div class="flex-1 w-full max-w-[220px]">
+                        <div class="w-full h-32 rounded-xl border border-slate-200 bg-slate-50 p-4 flex flex-col items-center justify-center text-center shadow-md hover:border-purple-500/40 transition-all">
+                            <span class="text-xs font-mono text-purple-600 uppercase tracking-widest mb-1.5 font-bold">Dataset (80%)</span>
+                            <span class="text-sm font-bold text-slate-800 leading-tight font-mono">TRAINING DATA<br>(80% of Datapoints)</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Arrow 3 -->
+                    <div class="flex-shrink-0 xl:rotate-0 rotate-90 text-slate-400 font-bold text-xl my-2 xl:my-0">➔</div>
+                    
+                    <!-- Step 4: DNN with Validation coming from top -->
+                    <div class="flex-shrink-0 w-full max-w-[280px] relative flex flex-col items-center justify-center">
+                        <!-- Validation Data (Cyan Box absolute above DNN) -->
+                        <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-48 rounded-lg border border-cyan-200 bg-cyan-50 p-2 text-center shadow-md hover:border-cyan-500/40 transition-all z-10">
+                            <span class="text-xs font-bold text-cyan-800 font-mono block">VALIDATION DATA</span>
+                            <span class="text-[10px] font-mono text-cyan-600 block mt-0.5 leading-tight">(20% Randomly Selected Points)</span>
+                            <!-- Downward arrow to DNN -->
+                            <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 text-cyan-500 font-bold text-md leading-none">↓</div>
+                        </div>
+                        
+                        <!-- DNN Box containing custom SVG neural nodes -->
+                        <div class="w-full h-32 rounded-xl border border-emerald-200 bg-emerald-50/30 p-3 flex flex-col items-center justify-between shadow-md hover:border-emerald-500/40 transition-all">
+                            <div class="text-center">
+                                <span class="text-[9px] font-mono text-emerald-700 uppercase tracking-widest font-bold block">DEEP NEURAL NETWORK (DNN) ALGORITHM</span>
+                                <span class="text-[9px] font-mono text-slate-500 block leading-tight mt-0.5 font-semibold">Validation verifies accuracy target: <strong class="text-[#00aeef] font-bold">R² > 0.95</strong></span>
+                            </div>
+                            <!-- SVG Neural Net -->
+                            <svg class="w-full h-16 opacity-85" viewBox="0 0 200 60">
+                                <!-- Connections -->
+                                <line x1="20" y1="15" x2="60" y2="10" stroke="#94a3b8" stroke-width="0.5" stroke-dasharray="1 1" />
+                                <line x1="20" y1="15" x2="60" y2="30" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="20" y1="15" x2="60" y2="50" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="20" y1="45" x2="60" y2="10" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="20" y1="45" x2="60" y2="30" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="20" y1="45" x2="60" y2="50" stroke="#94a3b8" stroke-width="0.5" stroke-dasharray="1 1" />
+                                <line x1="60" y1="10" x2="100" y2="10" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="60" y1="10" x2="100" y2="30" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="60" y1="10" x2="100" y2="50" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="60" y1="30" x2="100" y2="10" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="60" y1="30" x2="100" y2="30" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="60" y1="30" x2="100" y2="50" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="60" y1="50" x2="100" y2="10" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="60" y1="50" x2="100" y2="30" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="60" y1="50" x2="100" y2="50" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="100" y1="10" x2="140" y2="20" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="100" y1="10" x2="140" y2="40" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="100" y1="30" x2="140" y2="20" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="100" y1="30" x2="140" y2="40" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="100" y1="50" x2="140" y2="20" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="100" y1="50" x2="140" y2="40" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="140" y1="20" x2="180" y2="30" stroke="#94a3b8" stroke-width="0.5" />
+                                <line x1="140" y1="40" x2="180" y2="30" stroke="#94a3b8" stroke-width="0.5" />
+
+                                <!-- Nodes -->
+                                <circle cx="20" cy="15" r="3" fill="#3b82f6" />
+                                <circle cx="20" cy="45" r="3" fill="#3b82f6" />
+                                <!-- Hidden Layer 1 -->
+                                <circle cx="60" cy="10" r="3" fill="#10b981" />
+                                <circle cx="60" cy="30" r="3" fill="#10b981" />
+                                <circle cx="60" cy="50" r="3" fill="#10b981" />
+                                <!-- Hidden Layer 2 -->
+                                <circle cx="100" cy="10" r="3" fill="#10b981" />
+                                <circle cx="100" cy="30" r="3" fill="#10b981" />
+                                <circle cx="100" cy="50" r="3" fill="#10b981" />
+                                <!-- Output layer -->
+                                <circle cx="140" cy="20" r="3" fill="#8b5cf6" />
+                                <circle cx="140" cy="40" r="3" fill="#8b5cf6" />
+                                <!-- Final node -->
+                                <circle cx="180" cy="30" r="3" fill="#f43f5e" />
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <!-- Arrow 4 -->
+                    <div class="flex-shrink-0 xl:rotate-0 rotate-90 text-slate-400 font-bold text-xl my-2 xl:my-0">➔</div>
+                    
+                    <!-- Step 5: Hybrid Digital Twin -->
+                    <div class="flex-1 w-full max-w-[220px]">
+                        <div class="w-full h-32 rounded-xl border border-rose-200 bg-rose-50/50 p-4 flex flex-col items-center justify-center text-center shadow-md hover:border-rose-500/40 transition-all">
+                            <span class="text-xs font-mono text-rose-600 uppercase tracking-widest mb-1.5 font-bold">Output Core</span>
+                            <span class="text-sm font-bold text-slate-800 leading-tight font-mono">HYBRID DIGITAL TWIN</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Comparison & Proof -->
+            <div class="text-center max-w-3xl mx-auto mt-20 mb-12 space-y-4">
+                <h3 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 font-sans">Why Force-X?</h3>
+                <div class="h-1 w-20 bg-blue-600 mx-auto rounded"></div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+                <!-- Left: Limitations of Standard ML -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-200 shadow-sm bg-slate-50">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-8 h-8 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-500 font-bold">X</div>
+                        <h4 class="text-lg font-bold text-slate-900">Limitations of Standard ML Twins</h4>
+                    </div>
+                    <ul class="space-y-4 text-sm text-slate-650 font-light">
+                        <li class="flex items-start space-x-3">
+                            <span class="text-red-500 mt-1">•</span>
+                            <span><strong>Tailored for discrete event processes:</strong> Hydrocarbon processing are continuous operations.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-red-500 mt-1">•</span>
+                            <span><strong>Near-Infinite Plant Data Required:</strong> ML models need enormous training sets to map all relevant variables.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-red-500 mt-1">•</span>
+                            <span><strong>Mass Balance Errors (2-5%):</strong> Standard neural nets do not enforce physical conservation laws, leading to physically impossible outputs.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-red-500 mt-1">•</span>
+                            <span><strong>Poor Non-Linear Mapping:</strong> Struggles to accurately represent highly non-linear chemical and thermal boundaries.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-red-500 mt-1">•</span>
+                            <span><strong>Limited Accuracy:</strong> Overall accuracy typically hovers only between 80% to 90%.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Right: The Force-X Difference -->
+                <div class="glass-card p-6 rounded-2xl border border-blue-200 bg-white shadow-md shadow-blue-500/5">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-600 font-bold font-mono">✓</div>
+                        <h4 class="text-lg font-bold text-slate-900">Force-X Hybrid Advantage</h4>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs font-mono uppercase tracking-widest text-slate-500 font-bold">Validation Metric</span>
+                                <span class="text-lg font-bold text-slate-800 block mt-0.5">Coefficient of Determination</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-3xl font-extrabold text-blue-600 font-mono">R² > 0.95</span>
+                            </div>
+                        </div>
+                        <ul class="space-y-3.5 text-sm text-slate-655 font-light">
+                            <li class="flex items-start space-x-3">
+                                <span class="text-blue-600 mt-1">•</span>
+                                <span><strong>No AI Hallucinations:</strong> Neural outputs are hard-constrained by physical equations.</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="text-blue-600 mt-1">•</span>
+                                <span><strong>Zero Mass Balance Deviations:</strong> Mass, energy, and momentum balances are conserved dynamically.</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="text-blue-600 mt-1">•</span>
+                                <span><strong>Physics-Guided Machine Learning:</strong> Incorporates unit operations theory directly into DNN algorithms.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Extra slide diagrams -->
+            <div class="mt-8 grid grid-cols-2 md:grid-cols-5 gap-4 mb-20">
+                <div class="bg-slate-50 p-2 rounded-xl border border-slate-200 shadow-sm flex items-center justify-center">
+                    <img src="assets/slide_5_img_1.jpg" alt="Industrial Distillation Column" class="w-full h-24 object-cover rounded-lg" />
+                </div>
+                <div class="bg-slate-50 p-2 rounded-xl border border-slate-200 shadow-sm flex items-center justify-center">
+                    <img src="assets/slide_5_img_2.png" alt="Neural Node Mapping" class="w-full h-24 object-cover rounded-lg" />
+                </div>
+                <div class="bg-slate-50 p-2 rounded-xl border border-slate-200 shadow-sm flex items-center justify-center">
+                    <img src="assets/slide_5_img_3.jpg" alt="Chemical Reactor Diagram" class="w-full h-24 object-cover rounded-lg" />
+                </div>
+                <div class="bg-slate-50 p-2 rounded-xl border border-slate-200 shadow-sm flex items-center justify-center">
+                    <img src="assets/slide_5_img_4.png" alt="Flow Rate Charts" class="w-full h-24 object-cover rounded-lg" />
+                </div>
+                <div class="bg-slate-50 p-2 rounded-xl border border-slate-200 shadow-sm flex items-center justify-center">
+                    <img src="assets/slide_5_img_5.png" alt="Force-X Logic Flow" class="w-full h-24 object-cover rounded-lg" />
+                </div>
+            </div>
+
+            <!-- Force-X Interactive Simulation Console (Demo) -->
+            <div id="demo" class="border-t border-slate-200 pt-16 scroll-mt-[120px]">
+                <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 font-sans">Try Force-X In Real Time</h2>
+                    <div class="h-1 w-20 bg-blue-600 mx-auto rounded"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                    <!-- Left Form Panel / Dashboard Console -->
+                    <div class="lg:col-span-7 flex">
+                        <div id="demo-console" class="glass-card w-full p-6 sm:p-8 rounded-2xl border border-slate-200 flex flex-col justify-between shadow-lg bg-slate-50 text-slate-800">
+                            <!-- Login Interface -->
+                            <div id="login-form-view" class="space-y-6">
+                                <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+                                    <div>
+                                        <h3 class="text-lg font-bold text-slate-900 font-mono">Force-X Simulation Portal</h3>
+                                        <p class="text-xs text-slate-500">Enter temporary account credentials below</p>
+                                    </div>
+                                    <span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 text-xs font-mono border border-blue-200">Simulator v2.1</span>
+                                </div>
+                                
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="block text-xs font-mono uppercase tracking-widest text-slate-500 mb-2">Account ID</label>
+                                        <input type="text" id="demo-account" placeholder="Enter Account ID" class="w-full bg-white border border-slate-300 px-4 py-2.5 rounded-lg text-sm focus:outline-none focus:border-blue-500 font-mono text-slate-800" />
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-mono uppercase tracking-widest text-slate-500 mb-2">Password</label>
+                                        <input type="password" id="demo-password" placeholder="••••••••" class="w-full bg-white border border-slate-300 px-4 py-2.5 rounded-lg text-sm focus:outline-none focus:border-blue-500 font-mono text-slate-800" />
+                                    </div>
+                                </div>
+
+                                <button onclick="handleLogin()" class="w-full py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold rounded-lg hover:opacity-95 transition-all text-sm uppercase tracking-wider font-mono shadow-sm">
+                                    Authenticate & Run Simulation
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Request Info Panel -->
+                    <div class="lg:col-span-5 flex">
+                        <div class="glass-card w-full p-6 sm:p-8 rounded-2xl border border-slate-200 flex flex-col justify-between shadow-md bg-slate-50 text-slate-800">
+                            <div class="space-y-6">
+                                <span class="text-xs font-mono uppercase tracking-widest text-blue-600 font-bold block">Force-X Evaluation Notice</span>
+                                <h3 class="text-xl font-bold text-slate-900 font-sans">Physically Constrained Neural Networks</h3>
+                                <p class="text-sm text-slate-655 leading-relaxed font-light">
+                                    Our interactive simulator environment allows engineers to test how first-principles mass, energy, and momentum equations are hard-constrained inside deep learning models.
+                                </p>
+                                <p class="text-sm text-slate-650 leading-relaxed font-light font-light">
+                                    By running catalytic reforming cases or column distillation bounds, users can verify that error tolerances consistently achieve R² > 0.95 while eliminating physical anomalies.
+                                </p>
+                                <div class="bg-white p-4 rounded-xl border border-slate-200 text-xs text-slate-655 shadow-sm">
+                                    <strong>Access credentials:</strong> Contact us to request a 90-day evaluation token. Use the credentials to unlock the simulator portal.
+                                </div>
+                            </div>
+
+                            <!-- Contact Form -->
+                            <div class="pt-6 border-t border-slate-200 mt-6">
+                                <h4 class="text-xs font-mono uppercase tracking-widest text-slate-500 mb-3">Request Simulation Account</h4>
+                                <div class="text-xs text-slate-655">
+                                    To request a simulator account, please contact us directly at 
+                                    <a href="mailto:contact@exentropic.com" class="text-blue-600 font-bold hover:underline font-mono">contact@exentropic.com</a>.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-100 border-t border-slate-200 py-12 text-slate-600 text-xs text-center font-mono">
+        <div class="max-w-screen-2xl mx-auto px-4 space-y-4">
+            <p>© 2026 EXENTROPIC IDEAS INC. ALL RIGHTS RESERVED.</p>
+            <p class="text-slate-500">Based in London, Canada. Engineered for the global industrial landscape.</p>
+            <p class="text-slate-500 font-semibold mt-2">Contact Information: <a href="mailto:contact@exentropic.com" class="text-blue-600 hover:underline">contact@exentropic.com</a></p>
+            <div class="flex justify-center space-x-6 pt-4 text-slate-500">
+                <a href="index.html#vision" class="hover:text-slate-900 transition-colors">Vision</a>
+                <span>•</span>
+                <a href="force-x.html" class="hover:text-slate-900 transition-colors font-semibold">Force-X</a>
+                <span>•</span>
+                <a href="omniplant.html" class="hover:text-slate-900 transition-colors">OmniPlant-AX</a>
+                <span>•</span>
+                <a href="hazop.html" class="hover:text-slate-900 transition-colors">HAZOP-X</a>
+                <span>•</span>
+                <a href="knowledge.html" class="hover:text-slate-900 transition-colors">Knowledge Centre</a>
+                <span>•</span>
+                <a href="about.html" class="hover:text-slate-900 transition-colors">About</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JS Scripts -->
+    <script>
+        function handleLogin() {
+            const acc = document.getElementById('demo-account').value.trim();
+            const pass = document.getElementById('demo-password').value.trim();
+            
+            const formView = document.getElementById('login-form-view');
+            formView.innerHTML = `
+                <div class="space-y-4 py-8 text-center text-slate-800">
+                    <div class="w-12 h-12 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 font-bold mx-auto text-xl shadow-lg">i</div>
+                    <h3 class="text-lg font-bold text-slate-900 font-mono">Request Simulator Access</h3>
+                    <p class="text-sm text-slate-600 px-4 leading-relaxed font-light">
+                        To activate this simulator account or request a 90-day temporary access key, please contact Exentropic Ideas directly at:
+                    </p>
+                    <a href="mailto:contact@exentropic.com" class="text-blue-600 font-bold hover:underline block font-mono text-base mt-2">contact@exentropic.com</a>
+                    <button onclick="window.location.reload()" class="mt-6 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-white rounded-lg text-xs font-semibold transition-all font-mono">Back to Portal</button>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
