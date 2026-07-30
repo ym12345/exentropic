@@ -109,6 +109,21 @@
             animation: bounceHorizontal 1.2s infinite;
         }
 
+        /* Stepped News Slider */
+        .news-slider-wrapper {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+        .news-slider-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+        }
+        .news-item-card {
+            flex-shrink: 0;
+            width: 100%;
+        }
         /* -------------------------------------------------------------
            RESPONSIVE LAYOUT SYSTEM: MOBILE VS DESKTOP NARROW
            ------------------------------------------------------------- */
@@ -291,10 +306,51 @@
                             <span class="text-[#00aeef] whitespace-nowrap">Hydrocarbon Processing</span><br>
                             Industries
                         </h1>
-                        <p class="text-lg text-slate-600 max-w-xl font-light">
-                            Engineering next-generation, purpose-built digital twins and autonomous manufacturing systems to transition continuous process operations from reactive to predictive.
+                        <p class="text-lg text-slate-600 max-w-xl font-light text-justify">
+                            Engineering Next Generation Digital Twins &amp; Autonomous Manufacturing Systems to Transform the Continuous Process Operations from Reactive to Predictive.
                         </p>
-                        <!-- Quick Specs -->
+                        <!-- Stepped News Slider -->
+                        <div class="w-full pt-2">
+                            <div class="flex items-center justify-between mb-2">
+                                <p class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-[#00aeef] animate-pulse"></span>
+                                    Latest News
+                                </p>
+                                <div class="flex items-center space-x-1.5">
+                                    <button id="news-prev-btn" aria-label="Previous News" class="w-7 h-7 rounded-full border border-slate-300 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold flex items-center justify-center text-sm transition-all shadow-xs hover:shadow cursor-pointer active:scale-95">‹</button>
+                                    <button id="news-next-btn" aria-label="Next News" class="w-7 h-7 rounded-full border border-slate-300 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold flex items-center justify-center text-sm transition-all shadow-xs hover:shadow cursor-pointer active:scale-95">›</button>
+                                </div>
+                            </div>
+                            
+                            <div class="news-slider-wrapper rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-1.5 shadow-inner">
+                                <div id="news-slider-track" class="news-slider-track">
+                                    <div class="news-item-card px-1">
+                                        <a href="force-x.html" class="flex items-center h-full p-2.5 rounded-lg bg-white/90 hover:bg-white border border-slate-200/80 hover:border-cyan-500/50 shadow-xs transition-all text-xs text-slate-700 leading-snug group">
+                                            <span class="w-2 h-2 rounded-full bg-blue-500 mr-2 flex-shrink-0"></span>
+                                            <span class="group-hover:text-blue-600 transition-colors">Catalytic Reforming Interactive Hybrid Digital Twin Will be Available On-Line From 25-Aug-2026</span>
+                                        </a>
+                                    </div>
+                                    <div class="news-item-card px-1">
+                                        <a href="force-x.html#demo" class="flex items-center h-full p-2.5 rounded-lg bg-white/90 hover:bg-white border border-slate-200/80 hover:border-cyan-500/50 shadow-xs transition-all text-xs text-slate-700 leading-snug group">
+                                            <span class="w-2 h-2 rounded-full bg-[#00aeef] mr-2 flex-shrink-0"></span>
+                                            <span class="group-hover:text-cyan-600 transition-colors">Naphtha Cracking Interactive Hybrid Digital Twin Is Now Available — <strong class="text-cyan-600 font-semibold">Try Now!</strong></span>
+                                        </a>
+                                    </div>
+                                    <div class="news-item-card px-1">
+                                        <a href="omniplant.html" class="flex items-center h-full p-2.5 rounded-lg bg-white/90 hover:bg-white border border-slate-200/80 hover:border-cyan-500/50 shadow-xs transition-all text-xs text-slate-700 leading-snug group">
+                                            <span class="w-2 h-2 rounded-full bg-cyan-600 mr-2 flex-shrink-0"></span>
+                                            <span class="group-hover:text-cyan-600 transition-colors">OmniPlant-AX: Autonomous Manufacturing Launch Date Announced</span>
+                                        </a>
+                                    </div>
+                                    <div class="news-item-card px-1">
+                                        <a href="hazop.html#demo" class="flex items-center h-full p-2.5 rounded-lg bg-white/90 hover:bg-white border border-slate-200/80 hover:border-cyan-500/50 shadow-xs transition-all text-xs text-slate-700 leading-snug group">
+                                            <span class="w-2 h-2 rounded-full bg-pink-500 mr-2 flex-shrink-0"></span>
+                                            <span class="group-hover:text-pink-600 transition-colors">HAZOP-X Launched and Available for Licensing — <strong class="text-pink-600 font-semibold">Try Now!</strong></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="flex justify-between flex-wrap items-start gap-y-4 pt-8 border-t border-slate-200 w-full">
                             <a href="force-x.html" class="block hover:opacity-85 transition-opacity group">
                                 <p class="text-2xl font-bold text-slate-900 font-mono group-hover:text-blue-600 transition-colors">Force-X</p>
@@ -333,7 +389,7 @@
                     <!-- Left: Quote text -->
                     <div class="slide-text-col space-y-4">
                         <span class="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold block">Core Vision</span>
-                        <blockquote class="text-sm sm:text-base lg:text-lg font-light italic leading-relaxed text-slate-800 border-l-4 border-blue-500 pl-4">
+                        <blockquote class="text-sm sm:text-base lg:text-lg font-light italic leading-relaxed text-slate-800 border-l-4 border-blue-500 pl-4 text-justify">
                             “High fidelity, first principles-based hybrid digital twins will drive the digital transformation and autonomous manufacturing in the hydrocarbon processing industries.”
                         </blockquote>
                         <p class="text-xs text-slate-500 font-mono">
@@ -363,7 +419,7 @@
                         <span class="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold block">First-Principles AI Suite</span>
                         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 font-sans">Force-X: Hybrid Digital Twin</h2>
                         <h3 class="text-lg font-mono text-slate-550 font-semibold">Physics-Based Modeling + Neural Networks</h3>
-                        <p class="text-slate-655 leading-relaxed text-sm sm:text-base font-light">
+                        <p class="text-slate-655 leading-relaxed text-sm sm:text-base font-light text-justify">
                             Force-X is the fusion of physics-based modeling and neural network-based deep machine learning. This makes the thermodynamics, kinetics, and hydrodynamics fully embedded in the machine learning model, providing unmatched predictive insight and asset optimization capabilities.
                         </p>
                         <div class="flex space-x-4 pt-2">
@@ -394,7 +450,7 @@
                         <span class="text-xs font-mono text-cyan-600 uppercase tracking-widest font-bold block">Autonomous Manufacturing Core</span>
                         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 font-sans">OmniPlant-AX: Autonomous Manufacturing</h2>
                         <h3 class="text-lg font-mono text-slate-550 font-semibold">Moving Past Standard Industrial Automation</h3>
-                        <p class="text-slate-655 leading-relaxed text-sm sm:text-base font-light">
+                        <p class="text-slate-655 leading-relaxed text-sm sm:text-base font-light text-justify">
                             OmniPlant-AX introduces closed-loop, self-operating capabilities to maximize chemical plant efficiency, safety, and yields with minimal human intervention. It processes structural plant documentation to coordinate safe operations.
                         </p>
                         <div class="pt-2">
@@ -424,7 +480,7 @@
                         <span class="text-xs font-mono text-pink-600 uppercase tracking-widest font-bold block">Safety Infrastructure Suite</span>
                         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 font-sans">HAZOP-X: AI-Driven Process Safety</h2>
                         <h3 class="text-lg font-mono text-slate-550 font-semibold">Modernizing Operational Risk Assessment</h3>
-                        <p class="text-slate-655 leading-relaxed text-sm sm:text-base font-light">
+                        <p class="text-slate-655 leading-relaxed text-sm sm:text-base font-light text-justify">
                             HAZOP-X is an AI-driven safety infrastructure designed to automate and simplify process hazard analysis (PHA). By continuously evaluating plant piping diagrams and operational bounds, it verifies potential vulnerabilities, optimizing industrial safety protocols.
                         </p>
                         <div class="flex space-x-4 pt-2">
@@ -455,7 +511,7 @@
                         <span class="text-xs font-mono text-blue-650 uppercase tracking-widest font-bold block">Research & Resources</span>
                         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 font-sans">Exentropic Knowledge Centre</h2>
                         <h3 class="text-lg font-mono text-slate-550 font-semibold">Available Knowledge Resources</h3>
-                        <p class="text-slate-655 leading-relaxed text-sm sm:text-base font-light">
+                        <p class="text-slate-655 leading-relaxed text-sm sm:text-base font-light text-justify">
                             Exentropic publishes technical briefs, slide decks, whitepapers, and interactive case studies covering the application of hybrid digital twins, chemical kinetics, and safety orchestration within heavy industry.
                         </p>
                         <div class="pt-2">
@@ -486,7 +542,7 @@
                         <span class="text-xs font-mono text-slate-500 uppercase tracking-widest font-bold block">Company Profile</span>
                         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 font-sans">About Exentropic Ideas</h2>
                         <h3 class="text-lg font-mono text-slate-500 font-semibold">Linking First-Principles with Industrial Intelligence</h3>
-                        <p class="text-slate-655 leading-relaxed text-sm sm:text-base font-light">
+                        <p class="text-slate-655 leading-relaxed text-sm sm:text-base font-light text-justify">
                             Founded in 2025 in London, Canada, Exentropic combines veteran process design expertise with modern machine learning research. We engineer next-generation, AI-powered, purpose-built suites that empower heavy industrial facilities to transition from reactive monitoring to autonomous, predictive optimization.
                         </p>
                         <div class="pt-2">
@@ -531,5 +587,64 @@
 
     </main>
 
+    <!-- News Slider Script -->
+    <script>
+        (function() {
+            const track = document.getElementById('news-slider-track');
+            const prevBtn = document.getElementById('news-prev-btn');
+            const nextBtn = document.getElementById('news-next-btn');
+            if (!track) return;
+
+            let currentIndex = 0;
+            const totalItems = 4;
+            let autoTimer = null;
+
+            function updateSlider() {
+                if (currentIndex >= totalItems) currentIndex = 0;
+                if (currentIndex < 0) currentIndex = totalItems - 1;
+
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex >= totalItems - 1) ? 0 : currentIndex + 1;
+                updateSlider();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex <= 0) ? totalItems - 1 : currentIndex - 1;
+                updateSlider();
+            }
+
+            function startTimer() {
+                stopTimer();
+                autoTimer = setInterval(nextSlide, 10000); // 10 seconds delay
+            }
+
+            function stopTimer() {
+                if (autoTimer) clearInterval(autoTimer);
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function() {
+                    nextSlide();
+                    startTimer();
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function() {
+                    prevSlide();
+                    startTimer();
+                });
+            }
+
+            track.addEventListener('mouseenter', stopTimer);
+            track.addEventListener('mouseleave', startTimer);
+            window.addEventListener('resize', updateSlider);
+
+            startTimer();
+        })();
+    </script>
 </body>
 </html>
